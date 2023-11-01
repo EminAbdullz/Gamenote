@@ -3,6 +3,7 @@ import React from "react";
 
 import CustomLink from "@/components/UI/CustomLink";
 
+import { StyledSettingPopover } from "./styles";
 import { SettingIcon } from "@/icons";
 
 const SettingPopover: React.FC = () => {
@@ -23,7 +24,7 @@ const SettingPopover: React.FC = () => {
 	const settingLinkId = openSettingLink ? "setting_link-popover" : undefined;
 
 	return (
-		<>
+		<StyledSettingPopover>
 			{" "}
 			<Button
 				className="setting_button"
@@ -48,7 +49,7 @@ const SettingPopover: React.FC = () => {
 				{" "}
 				SETTING
 			</Popover>
-		</>
+		</StyledSettingPopover>
 	);
 };
 
