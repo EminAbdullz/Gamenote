@@ -8,7 +8,10 @@ export const StyledNavigation = styled(Box)(({ theme }) => ({
 	height: "85px",
 	display: "flex",
 	justifyContent: "right",
-	".setting_link": {
+	".setting_button": {
+		".setting_link": {
+			...displayFlexCentered,
+		},
 		[theme.breakpoints.down("tabletL")]: {
 			display: "none",
 			opacity: 0,
@@ -17,9 +20,11 @@ export const StyledNavigation = styled(Box)(({ theme }) => ({
 		...displayFlexCentered,
 		fontSize: "25px",
 		color: "inherit",
+		backgroundColor: "inherit",
 		width: "85px",
 		heigth: `85px`,
 		borderLeft: `0.5px solid ${theme.palette.primary.contrastText}`,
+		borderRadius: "0px",
 		transition: useTransition(),
 		"&:hover": {
 			color: theme.palette.primary.main,
@@ -166,7 +171,10 @@ export const StyledNavigation = styled(Box)(({ theme }) => ({
 			},
 		},
 	},
-	".basket_link": {
+	".basket_button": {
+		".basket_link": {
+			...displayFlexCentered,
+		},
 		[theme.breakpoints.down("mobile")]: {
 			width: "65px",
 			heigth: `85px`,

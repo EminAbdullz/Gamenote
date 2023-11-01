@@ -16,6 +16,7 @@ i18next.use(initReactI18next).init({
 			translation: ruTranslation,
 		},
 	},
+	ns: ["translation"],
 	interpolation: {
 		escapeValue: false,
 	},

@@ -6,8 +6,8 @@ import { TypeCustomLink } from "./types";
 
 const CustomLink: FC<TypeCustomLink> = ({ children, className, href }) => {
 	return (
-		<Link className={className} href={href || ""}>
-			{<Icon>{children}</Icon>}
+		<Link className={className} href={href || ""} style={{ color: "inherit" }}>
+			{children}
 		</Link>
 	);
 };
