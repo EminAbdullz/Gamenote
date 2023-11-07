@@ -9,7 +9,7 @@ import logo from "../../../../public/logo.png";
 const Logo: FC<TypeClassname> = ({ className }) => {
 	return (
 		<Box component={"div"} className={className}>
-			<Image src={logo} alt="LOGO" width={250} />
+			<Image src={logo} alt="LOGO" width={250} priority />
 		</Box>
 	);
 };

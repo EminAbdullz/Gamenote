@@ -10,7 +10,7 @@ const BottomNavigation: FC = () => {
 	return (
 		<StyledBottomNavigation component={"nav"}>
 			<Stack className="main_nav">
-				{/* <Typography component={"p"}>{t("country")}</Typography> */}
+				<Typography component={"p"}>{t("country")}</Typography>
 			</Stack>
 		</StyledBottomNavigation>
 	);

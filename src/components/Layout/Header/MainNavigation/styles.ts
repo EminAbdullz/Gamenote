@@ -4,14 +4,12 @@ import displayFlexCentered from "@/theme/displays";
 import useTransition from "@/theme/hooks/useTransition";
 
 export const StyledNavigation = styled(Box)(({ theme }) => ({
-	width: "340px",
 	height: "85px",
 	display: "flex",
 	justifyContent: "flex-end",
 	".favorite_link": {
-		[theme.breakpoints.down("mobile")]: {
+		[theme.breakpoints.down("tabletM")]: {
 			width: "60px",
-			heigth: `85px`,
 		},
 		...displayFlexCentered,
 		fontSize: "25px",

@@ -1,12 +1,20 @@
+"use client";
+
 import { Button, Popover } from "@mui/material";
 import React from "react";
 
 import CustomLink from "@/components/UI/CustomLink";
 
-import { LogInIcon } from "@/icons";
+import useCheckCurrentToken from "@/hooks/checkCurrentToken";
+
+import Auth from "./Auth";
+import LogOut from "./LogOut";
 import { StyledLoginPopover } from "./styles";
+import { LogInIcon, UserIcon } from "@/icons";
+import { useAppSelector } from "@/redux/hooks/useAppSelector";
 
 const LogInPopover: React.FC = () => {
+	//! Popover logic
 	const [anchorLogInLink, setAnchorLogInLink] =
 		React.useState<HTMLButtonElement | null>(null);
 
@@ -23,6 +31,10 @@ const LogInPopover: React.FC = () => {
 	const openLogInLink = Boolean(anchorLogInLink);
 	const LogInLinkId = openLogInLink ? "login_link-popover" : undefined;
 
+	//! Auth
+
+	const token: string = useCheckCurrentToken();
+
 	return (
 		<StyledLoginPopover>
 			{" "}
@@ -33,7 +45,7 @@ const LogInPopover: React.FC = () => {
 				onClick={handleClickOpenLogInLinkPopover}
 			>
 				<CustomLink className="login_link">
-					<LogInIcon />
+					{!token ? <LogInIcon /> : <UserIcon />}
 				</CustomLink>
 			</Button>
 			<Popover
@@ -46,8 +58,7 @@ const LogInPopover: React.FC = () => {
 					horizontal: "left",
 				}}
 			>
-				{" "}
-				SETTING
+				{!token ? <Auth /> : <LogOut />}
 			</Popover>
 		</StyledLoginPopover>
 	);

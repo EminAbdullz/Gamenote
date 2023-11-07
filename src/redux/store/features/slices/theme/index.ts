@@ -3,12 +3,11 @@ import { createSlice } from "@reduxjs/toolkit";
 import Cookies from "js-cookie";
 
 import { TypeThemeState } from "./types";
-import { constantDark, constantLight, constantMode } from "@/constants";
 
 const initialState: TypeThemeState = {
-	modeTrigger: Cookies.get(constantMode)
-		? (Cookies.get(constantMode) as PaletteMode)
-		: constantDark,
+	modeTrigger: Cookies.get("mode")
+		? (Cookies.get("mode") as PaletteMode)
+		: "dark",
 };
 
 const themeSlice = createSlice({
@@ -16,8 +15,7 @@ const themeSlice = createSlice({
 	initialState,
 	reducers: {
 		switchMode: (state) => {
-			state.modeTrigger =
-				state.modeTrigger === constantDark ? constantLight : constantDark;
+			state.modeTrigger = state.modeTrigger === "dark" ? "light" : "dark";
 		},
 	},
 });

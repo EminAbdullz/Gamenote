@@ -1,12 +1,16 @@
+"use client";
+
 import { Button, Popover } from "@mui/material";
 import React from "react";
 
 import CustomLink from "@/components/UI/CustomLink";
 
-import { StyledSettingPopover } from "./styles";
+import LangSwitcher from "./LangSwitcher";
+import { StyledSetting } from "./styles";
 import { SettingIcon } from "@/icons";
 
 const SettingPopover: React.FC = () => {
+	//! Popover logic
 	const [anchorSettingLink, setAnchorSettingLink] =
 		React.useState<HTMLButtonElement | null>(null);
 
@@ -24,8 +28,7 @@ const SettingPopover: React.FC = () => {
 	const settingLinkId = openSettingLink ? "setting_link-popover" : undefined;
 
 	return (
-		<StyledSettingPopover>
-			{" "}
+		<StyledSetting>
 			<Button
 				className="setting_button"
 				aria-describedby={settingLinkId}
@@ -46,10 +49,9 @@ const SettingPopover: React.FC = () => {
 					horizontal: "left",
 				}}
 			>
-				{" "}
-				SETTING
+				<LangSwitcher />
 			</Popover>
-		</StyledSettingPopover>
+		</StyledSetting>
 	);
 };
 

@@ -1,9 +1,9 @@
-import { Box, styled } from "@mui/material";
+import { Box, Popover, styled } from "@mui/material";
 
 import displayFlexCentered from "@/theme/displays";
 import useTransition from "@/theme/hooks/useTransition";
 
-export const StyledSettingPopover = styled(Box)(({ theme }) => ({
+export const StyledSetting = styled(Box)(({ theme }) => ({
 	".setting_button": {
 		width: "85px",
 		height: "85px",
@@ -27,3 +27,4 @@ export const StyledSettingPopover = styled(Box)(({ theme }) => ({
 		visibility: "hidden",
 	},
 }));
+
