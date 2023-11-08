@@ -7,8 +7,6 @@ import { useTranslation } from "react-i18next";
 import { toast } from "react-toastify";
 import Swal from "sweetalert2";
 
-import useCheckCurrentToken from "@/hooks/checkCurrentToken";
-
 import { logInService } from "@/services/auth/logIn";
 
 import { IUser } from "@/shared/interfaces/user";
@@ -27,7 +25,7 @@ const Auth: React.FC = () => {
 	const [login, setLogin] = React.useState<string>("");
 	const [password, setPassword] = React.useState<string>("");
 
-	const { setToken } = useActions();
+	const { setToken, setAdmin } = useActions();
 
 	const onHandleAuth = async (e: React.FormEvent<HTMLFormElement>) => {
 		e?.preventDefault();
@@ -61,6 +59,10 @@ const Auth: React.FC = () => {
 
 		if (token?.token && !token?.error) {
 			setToken(token?.token);
+			const currentUser: IUser = tokenReader(token?.token) as IUser;
+
+			setAdmin(currentUser?.isAdmin);
+
 			setLogin("");
 			setPassword("");
 
@@ -72,10 +74,6 @@ const Auth: React.FC = () => {
 			});
 		}
 	};
-
-	const token: string = useCheckCurrentToken();
-
-	const user: IUser = tokenReader(token) as IUser;
 
 	return (
 		<StyledFormControl>

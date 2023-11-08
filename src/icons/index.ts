@@ -23,14 +23,12 @@ import {
 } from "react-icons/fa";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { ImSearch } from "react-icons/im";
-import {
-	IoIosCloseCircleOutline,
-	IoMdSettings,
-} from "react-icons/io";
+import { IoIosCloseCircleOutline, IoMdSettings } from "react-icons/io";
 import { IoMdArrowDropdown, IoMdArrowDropup } from "react-icons/io";
 import { IoCloseOutline, IoHomeSharp } from "react-icons/io5";
 import { IconType } from "react-icons/lib";
 import { MdFavorite, MdLanguage, MdLightMode } from "react-icons/md";
+import { RiAdminFill } from "react-icons/ri";
 import { TbCurrencyManat } from "react-icons/tb";
 
 export const FavoriteIcon: IconType = MdFavorite;
@@ -62,3 +60,4 @@ export const LightModeIcon: IconType = MdLightMode;
 export const DarkModeIcon: IconType = BsFillMoonStarsFill;
 export const LanguageIcon: IconType = MdLanguage;
 export const YinYang: IconType = BsYinYang;
+export const AdminIcon: IconType = RiAdminFill;

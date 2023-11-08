@@ -11,7 +11,6 @@ import Auth from "./Auth";
 import LogOut from "./LogOut";
 import { StyledLoginPopover } from "./styles";
 import { LogInIcon, UserIcon } from "@/icons";
-import { useAppSelector } from "@/redux/hooks/useAppSelector";
 
 const LogInPopover: React.FC = () => {
 	//! Popover logic

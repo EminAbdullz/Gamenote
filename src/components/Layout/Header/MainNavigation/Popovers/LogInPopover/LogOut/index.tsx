@@ -1,9 +1,13 @@
-import { Button, Theme, useTheme } from "@mui/material";
-import moment from "moment";
+import { Button, Stack, Theme, Typography, useTheme } from "@mui/material";
+import { AppRouterInstance } from "next/dist/shared/lib/app-router-context";
 import { useRouter } from "next/navigation";
-import React from "react";
+import React, { FC } from "react";
 import { useTranslation } from "react-i18next";
 import Swal from "sweetalert2";
+
+import CustomLink from "@/components/UI/CustomLink";
+
+import useCheckCurrentToken from "@/hooks/checkCurrentToken";
 
 import { IUser } from "@/shared/interfaces/user";
 
@@ -11,27 +15,15 @@ import { tokenReader } from "@/utils/tokenReader";
 
 import { StyledLogOut } from "./styles";
 import { useActions } from "@/redux/hooks/useActions";
-import { useAppSelector } from "@/redux/hooks/useAppSelector";
 
-const LogOut: React.FC = () => {
-	const router = useRouter();
-
+const LogOut: FC = () => {
 	const { t } = useTranslation();
-
-	const token: string = useAppSelector(
-		(state) => state?.rootReducer?.token?.token
-	);
-
-	const { removeToken } = useActions();
-
-	const user: IUser = tokenReader(token) as IUser;
-
 	const theme: Theme = useTheme();
+	const router: AppRouterInstance = useRouter();
 
-	//! token time check
-
-	const tokenExp = moment(user?.tokenExpDate).format("LT");
-	const tokenIat = moment(user?.tokenIatDate).format("LT");
+	const { removeToken, removeAdmin } = useActions();
+	const token: string = useCheckCurrentToken();
+	const user: IUser = tokenReader(token) as IUser;
 
 	const onHandleSignOut = () => {
 		Swal.fire({
@@ -46,16 +38,28 @@ const LogOut: React.FC = () => {
 				Swal.fire("", "", "success");
 
 				removeToken();
-				setTimeout(() => router.push("/"), 150);
+				removeAdmin();
+
+				setTimeout(() => {
+					router.push("/");
+					window.location.reload();
+				}, 50);
 			}
 		});
 	};
 
 	return (
 		<StyledLogOut>
-			{user?.name}
-
-			{user?.surname}
+			<CustomLink href="/profile">
+				<Typography component={"h2"} className="link">
+					{t("profile")}
+				</Typography>
+			</CustomLink>
+			<Stack direction={"row"}>
+				<Typography component={"p"}>
+					{user?.name} {user?.surname}
+				</Typography>
+			</Stack>
 			<Button onClick={onHandleSignOut}>{t("logOut")}</Button>
 		</StyledLogOut>
 	);
